@@ -38,24 +38,25 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     list.style.visibility = 'visible';
 
 
-    // Validate
+    // Validate Empty
     if (validateInput(pilot) === 'Empty' || validateInput(copilot) === 'Empty' || validateInput(fuelLevel) === 'Empty' || validateInput(cargoLevel) === 'Empty') {
         window.alert('All fields are required!');
     }
+    // Validate correct data
     if (validateInput(pilot) === 'Is a Number' || validateInput(copilot) === 'Is a Number' || validateInput(fuelLevel) === 'Not a Number' || validateInput(cargoLevel) === 'Not a Number') {
         window.alert('Make sure to enter valid information for each field!');
     }
-    // Pilot & Copilot
+    // Pilot & Copilot names
     pilotStat.innerHTML = `Pilot ${pilot} is ready for launch`;
     coplitStat.innerHTML = `Co-pilot ${copilot} is ready for launch`;
-    // Fuel Level
+    // Fuel Level check
     if (fuelLevel < 10000) {
         fuelStat.innerHTML = 'Fuel level too low for launch';
         launchReady = false;
     } else {
         fuelStat.innerHTML = 'Fuel level high enough for launch';
     }
-    // Cargo Mass
+    // Cargo Mass check
     if (cargoLevel > 10000) {
         cargoStat.innerHTML = 'Cargo mass too heavy for launch';
         launchReady = false;
@@ -85,6 +86,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  }
  
  function pickPlanet(planets) {
+    
+    // random number multiplied by the length of the array of planets to use for index
     let randomIndex = Math.floor(Math.random() * planets.length);
     return planets[randomIndex];
 }

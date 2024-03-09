@@ -14,13 +14,16 @@ window.addEventListener("load", function() {
         console.log(listedPlanets);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
     
+        // picking a random planet
     let planet = pickPlanet(listedPlanets);
+    // feeding the planet data into funtion that while populate the html
     addDestinationInfo(document,planet.name,planet.diameter,planet.star,planet.distance,planet.moons,planet.image)
     
     })
 
     let form = document.getElementById("launchForm");
     form.addEventListener("submit", function (event) {
+        // stop reload
         event.preventDefault();
     formSubmission(document, 
       document.getElementById("faultyItems"), 
